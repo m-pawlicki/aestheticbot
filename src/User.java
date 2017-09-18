@@ -10,7 +10,6 @@ class User {
     //Initialization
     Properties auth = new Properties();
     InputStream input;
-    User user = new User();
     Generator gen = new Generator();
 
     //User authentication
@@ -53,6 +52,7 @@ class User {
     //Makes a text post
     void makePost(JumblrClient client){
         try {
+            User user = new User();
             TextPost toPost = client.newPost(user.getBlog("config.properties"), TextPost.class);
             toPost.setTitle("");
             toPost.setBody(gen.genPhrase(Generator.adjective, Generator.noun));
