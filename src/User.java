@@ -7,11 +7,14 @@ import java.util.Properties;
 
 class User {
 
-    static JumblrClient authenticateUser(String file) {
+    //Initialization
+    Properties auth = new Properties();
+    InputStream input;
+    User user = new User();
+    Generator gen = new Generator();
 
-        //Initialize data
-        Properties auth = new Properties();
-        InputStream input;
+    //User authentication
+    JumblrClient authenticateUser(String file) {
 
         //Open .properties file
         try {
@@ -34,11 +37,8 @@ class User {
         return client;
     }
 
-    static String getBlog(String file) {
-
-        //Initialize data
-        Properties auth = new Properties();
-        InputStream input;
+    //Gets blog URL
+    String getBlog(String file) {
 
         //Open .properties file
         try {
@@ -50,12 +50,12 @@ class User {
         return auth.getProperty("blogName");
     }
 
-    static void makePost(JumblrClient client){
+    //Makes a text post
+    void makePost(JumblrClient client){
         try {
-            TextPost toPost = client.newPost(User.getBlog("config.properties"), TextPost.class);
+            TextPost toPost = client.newPost(user.getBlog("config.properties"), TextPost.class);
             toPost.setTitle("");
-            Generator gen = new Generator();
-            toPost.setBody(Generator.genPost(gen.adjective,gen.noun));
+            toPost.setBody(gen.genPhrase(Generator.adjective, Generator.noun));
             toPost.addTag("aesthetic");
             toPost.addTag("aesthetics");
             toPost.addTag("aestheticgenbot");

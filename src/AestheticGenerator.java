@@ -1,14 +1,16 @@
 import com.tumblr.jumblr.JumblrClient;
-import com.tumblr.jumblr.types.TextPost;
 
 class AestheticGenerator {
 
     public static void main(String args[]) {
 
+        //Initialization
+        User blog = new User();
+
         //Authenticate new user
-        JumblrClient client = User.authenticateUser("config.properties");
+        JumblrClient client = blog.authenticateUser("config.properties");
 
         // Make a new post
-        User.makePost(client);
+        blog.makePost(client);
     }
 }
