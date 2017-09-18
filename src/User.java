@@ -21,7 +21,6 @@ class User {
         }
 
         // Authenticate via OAuth
-
         JumblrClient client = new JumblrClient(
                 auth.getProperty("consumerKey"),
                 auth.getProperty("consumerSecret")
@@ -32,5 +31,21 @@ class User {
                 auth.getProperty("tokenSecret")
         );
         return client;
+    }
+
+    public static String getBlog(String file) {
+
+        //Initialize data
+        Properties auth = new Properties();
+        InputStream input;
+
+        //Open .properties file
+        try {
+            input = new FileInputStream(file);
+            auth.load(input);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return auth.getProperty("blogName");
     }
 }

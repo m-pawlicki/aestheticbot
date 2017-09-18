@@ -17,7 +17,7 @@ class AestheticGenerator {
         // Make a new post
         try {
             final AestheticGenerator textBody = new AestheticGenerator();
-            final TextPost toPost = client.newPost("aestheticgenbot.tumblr.com", TextPost.class);
+            final TextPost toPost = client.newPost(User.getBlog("config.properties"), TextPost.class);
             toPost.setTitle("");
             toPost.setBody(textBody.genPost(adjective, noun));
             toPost.addTag("aesthetic");
