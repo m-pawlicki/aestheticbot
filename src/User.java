@@ -1,4 +1,5 @@
 import com.tumblr.jumblr.JumblrClient;
+import com.tumblr.jumblr.types.TextPost;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.FileInputStream;
@@ -6,7 +7,7 @@ import java.util.Properties;
 
 class User {
 
-    public static JumblrClient authenticateUser(String file) {
+    static JumblrClient authenticateUser(String file) {
 
         //Initialize data
         Properties auth = new Properties();
@@ -33,7 +34,7 @@ class User {
         return client;
     }
 
-    public static String getBlog(String file) {
+    static String getBlog(String file) {
 
         //Initialize data
         Properties auth = new Properties();
@@ -47,5 +48,20 @@ class User {
             e.printStackTrace();
         }
         return auth.getProperty("blogName");
+    }
+
+    static void makePost(JumblrClient client){
+        try {
+            TextPost toPost = client.newPost(User.getBlog("config.properties"), TextPost.class);
+            toPost.setTitle("");
+            Generator gen = new Generator();
+            toPost.setBody(Generator.genPost(gen.adjective,gen.noun));
+            toPost.addTag("aesthetic");
+            toPost.addTag("aesthetics");
+            toPost.addTag("aestheticgenbot");
+            toPost.save();
+        } catch (IllegalAccessException | InstantiationException e) {
+            e.printStackTrace();
+        }
     }
 }
