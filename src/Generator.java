@@ -5,16 +5,17 @@ import java.util.*;
 public class Generator {
 
     //Generates random String phrase
-    String genPhrase(List<List<String>> lists) {
+    String genPhrase(Map<String, List> map) {
         Random r = new Random();
-        int firstIndex = r.nextInt(lists.get(0).size());
-        int secondIndex = r.nextInt(lists.get(1).size());
-        return lists.get(0).get(firstIndex) + " " + lists.get(1).get(secondIndex);
+        int firstIndex = r.nextInt(map.get("adj").size());
+        int secondIndex = r.nextInt(map.get("noun").size());
+        return map.get("adj").get(firstIndex) + " " + map.get("noun").get(secondIndex);
     }
 
     //Parses File to a List<List<String>>
-    List<List<String>> parseFile(String file) {
+    Map<String, List> parseFile(String file) {
         File f = new File(file);
+        Map<String, List> map = new HashMap<>();
         try{
 
             //Initialization
@@ -34,10 +35,9 @@ public class Generator {
                 }
             }
 
-            List<List<String>> superList = new ArrayList<>();
-            superList.add(a);
-            superList.add(n);
-            return superList;
+            map.put("adj",a);
+            map.put("noun",n);
+            return map;
 
         } catch(FileNotFoundException e){ e.printStackTrace();}
 
