@@ -23,7 +23,7 @@ class User {
             e.printStackTrace();
         }
 
-        // Authenticate via OAuth
+        //OAuth
         JumblrClient client = new JumblrClient(
                 auth.getProperty("consumerKey"),
                 auth.getProperty("consumerSecret")
@@ -55,7 +55,7 @@ class User {
             User user = new User();
             TextPost toPost = client.newPost(user.getBlog("config.properties"), TextPost.class);
             toPost.setTitle("");
-            toPost.setBody(gen.genPhrase(Generator.adjective, Generator.noun));
+            toPost.setBody(gen.genPhrase((gen.parseFile("dict"))));
             toPost.addTag("aesthetic");
             toPost.addTag("aesthetics");
             toPost.addTag("aestheticgenbot");
