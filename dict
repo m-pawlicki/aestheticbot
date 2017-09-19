@@ -14,6 +14,9 @@ vapor,a
 slime,a
 mist,a
 dark,a
+comfy,a
+cozy,a
+beach,a
 dank,a
 light,a
 toasty,a
@@ -24,6 +27,11 @@ twink,a
 bear,a
 rave,a
 surfer,a
+water,a
+fire,a
+earth,a
+air,a
+flower,a
 jock,a
 nerd,a
 prep,a
@@ -34,6 +42,10 @@ solarpunk,a
 steampunk,a
 glitter,a
 gothic,a
+spring,a
+summer,a
+fall,a
+winter,a
 trash,n
 dad,n
 mom,n
@@ -80,3 +92,12 @@ sagittarius,n
 capricorn,n
 aquarius,n
 pisces,n
+socks,n
+farm,n
+corn,n
+horse,n
+spring,n
+summer,n
+fall,n
+winter,n
+egg,n
